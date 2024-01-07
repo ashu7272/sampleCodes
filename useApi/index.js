@@ -1,7 +1,7 @@
 
 const btnEl = document.getElementById("btn");
 btnEl.addEventListener("click",addPage);
-const apiUrl = " http://127.0.0.1:5000/chatAPI";
+const apiUrl = " https://127.0.0.1:5000/chatAPI";
 
 
  async function addPage(){
