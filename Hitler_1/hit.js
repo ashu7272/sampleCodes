@@ -9,33 +9,56 @@ const questions = [
 
     {question:"which planet is known as red planet?",
     options:["venus","marsh","maskow","tokiyo","milan"], 
-    answer: "paris"
+    answer: "venus"
     }
 ];
 
 
   const questionEl = document.getElementById("question");
-  console.log(questionEl)
-  const optionEl = document.getElementById("option");
+  
+  const optionEl = document.getElementById("options");
   const resultEl = document.getElementById("result");
   const btnEl = document.getElementById("nextBtn");
 
-  let currentquestion = 0;
-  let score = 0;
-  
-  
-    function displayquestion(){
-      let n = questions[currentquestion];
-      questionEl.textContent = n.question;
-      optionEl.innerHTML  = " ";
+ const  currentquestion = 0;
+ const  score = 0;
+ const n = questions[currentquestion];
+ 
+ 
+ function displayquestion(){
+   questionEl.textContent = n.question;
+   optionEl.innerHTML = "";
+   n.options.forEach((option)=>{
+    const button = document.createElement("button");
+    button.textContent = option;
+    button.addEventListener("click",(option)=>{
+      //  console.log(option);
+      checkAnswer(option)
 
-      n.options.forEach((option)=>{
-        const button = document.createElement("button");
-        button.textContent = option;
 
-        optionEl.append(button)
-      })
-      
+    })
+  
+    optionEl.appendChild(button);
+
+  })
+
+
+  function checkAnswer (answer){
+    const n = questions[currentquestion];
+    if(answer === n.answer){
+      score++;
     }
-    displayquestion()
   
+    currentquestion;
+    if(currentquestion<questions.length){
+      displayquestion();
+
+    }else{
+
+    }
+
+  }
+
+  
+ }
+ displayquestion();
