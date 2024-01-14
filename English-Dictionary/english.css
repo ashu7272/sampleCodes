@@ -1,0 +1,57 @@
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+body{
+    background: salmon;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    background: rgba(255,255,255,.6);
+    border: 2px solid rgba(255,255,255,.3);
+    border-radius: 10px;
+    height: 400px;
+    width: 400px;
+    text-align: center;
+    padding: 50px;
+    box-shadow: 2px 4px 6px rgba(0,0,0,.3),inset 2px 4px 6px rgba(0,0,0,.3);
+
+}
+.heading{
+    font-size: 18px;
+}
+.input{
+    padding: 8px 30px;
+    font-size: 15px;
+    border: none;
+    border-radius: 8px;
+    margin-top: 25px;
+    box-shadow: 2px 4px 6px rgba(0,0,0,.3);
+
+}
+.infotext{
+    font-size: 20px;
+    margin: 20px auto;
+}
+.meaning-container{
+    display: none;
+    background: rgba(255,255,255,.6);
+    width: 300px;
+    height: 120px;
+    justify-content: center;
+}
+.meaning-container, p{
+    font-size: 20px;
+    margin-bottom: 18px;
+}
+#audio{
+    border-radius: 8px;
+    background: rgba(255,255,255,.3);
+}
