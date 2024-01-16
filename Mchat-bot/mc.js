@@ -1,43 +1,42 @@
-
-const chatbodyEl = document.querySelector(".chat-body");
-const txtinputEl = document.querySelector("#txtinput");
 const sendEl = document.querySelector(".send");
+const txtinputEl = document.querySelector("#txtinput");
+const chatbodyEl = document.querySelector(".chat-body");
 
 
 
 sendEl.addEventListener("click",()=>{
-    renderUserMessage();
+    getMessage()
 });
 
- txtinputEl.addEventListener("keyup",(elm)=>{
-    if(elm.keyCode === 13){
-         renderUserMessage();
+ txtinputEl.addEventListener("click",(elm)=>{
+    if(elm.target.value == 13){
+     getMessage()
     }
+
  })
 
-const renderUserMessage = ()=>{
-  
-    const userInput = txtinputEl.value;
-    // console.log(userInput);
-     renderUserMessageEl(userInput);er
-     txtinputEl.value = "";
-      MResponse(userInput)
- }
+const getMessage = ()=>{
+    userMessage = txtinputEl.value ;
+    RMessageEl(userMessage);
+    txtinputEl.value = " ";
+    MilegaChat(userMessage);
+}
 
+const MilegaChat = ()=>{
+    const res = chatbotresponse(userMessage);
+    RMessageEl(res);
+}
 
-  const MResponse = (userInput)=>{
-    const res = getchatbotResponse[userInput];
-    renderUserMessageEl(res);
+const RMessageEl = (txt)=>{
+  const wrapper = document.createElement("div");
+  const txtNode  = document.createTextNode(txt);
+   wrapper.classList.add("user-message");
+   wrapper.append(txtNode);
+   chatbodyEl.append(wrapper);
+}
 
-  }
-  const renderUserMessageEl = (txt)=>{
-    const messageEl = document.createElement("div");
-     const txtNode = document.createTextNode(txt);
-    messageEl.classList.add("user-message");
-    messageEl.append(txtNode);
-    chatbodyEl.append(messageEl);
-  }
+const chatbotresponse =(userMessage)=>{
 
-  const getchatbotResponse = ()=>{
-      return responseobj[userInput] == undefined? "Please try something else":responseobj[userInput]
-  }
+    return responseobj[userMessage] == undefined?"Please use another method":responseobj[userMessage]
+
+}
