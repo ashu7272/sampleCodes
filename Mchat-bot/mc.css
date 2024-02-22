@@ -68,10 +68,43 @@ body{
     width: 100%;
     font-size: 1rem;
 }
-.user-message{
+.usedMessage{
     padding: 8px;
-    background: #ccc;
+    background: #831515;
     margin: 5px;
     width: max-content;
     border-radius: 10px 10px 5px 10px;
+
+    animation: right 1s ease-out ;
+}
+.showMessage{
+
+    padding: 8px;
+    background: #bdb7da;
+    margin: 5px;
+    width: max-content;
+    border-radius: 10px 10px 5px 10px;
+    align-self: flex-start;
+    animation: left 2s ease-out ;
+}
+
+@keyframes right {
+    0%{
+     opacity: 0;
+     transform: translateX(20%);
+    }
+    100%{
+     opacity: 1;
+     transform: translateX(0);
+    }
+}
+@keyframes left {
+    0%{
+      transform: translateX(-20%);
+      opacity: 0;
+    }
+    100%{
+      transform: translateX(0);
+      opacity: 1;
+    }
 }

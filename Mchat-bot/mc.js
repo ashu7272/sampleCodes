@@ -1,42 +1,62 @@
+import * as ok from "./response.js";
+
 const sendEl = document.querySelector(".send");
+
 const txtinputEl = document.querySelector("#txtinput");
 const chatbodyEl = document.querySelector(".chat-body");
 
 
-
-sendEl.addEventListener("click",()=>{
-    getMessage()
-});
-
- txtinputEl.addEventListener("click",(elm)=>{
-    if(elm.target.value == 13){
-     getMessage()
+ txtinputEl.addEventListener("keyup",(elm)=>{
+     if(elm.keyCode ===13){
+      renderMessage();
     }
-
  })
 
-const getMessage = ()=>{
-    userMessage = txtinputEl.value ;
-    RMessageEl(userMessage);
-    txtinputEl.value = " ";
-    MilegaChat(userMessage);
+ const chatbotAnswer = (response)=>{
+     const web = response;
+     getChat(response);
+ }
+
+ const getChat = (userInput,type)=>{
+  let className = "usedmessage";
+  if(type == "hello"){
+      className = "usedMessage";
+  }else{
+    className = "showMessage"
+  }
+
+  const messageEl = document.createElement("div");
+  messageEl.classList.add(className);
+  // const txtnode = document.createTextNode(userInput)
+  //  const um = messageEl.appendChild(txtnode);
+  messageEl.textContent = userInput;
+  setTimeout(()=>{
+
+  
+  chatbodyEl.appendChild(messageEl);
+  },1000)
+ }
+  
+const renderMessage = ()=>{
+  const userInput = txtinputEl.value ;
+  getChat(userInput,"hello");
+  txtinputEl.value = "";
+  const response = ok.chatbotService.chatbotResponse(userInput);
+  if(response){
+    setTimeout(()=>{
+      chatbotAnswer(response);
+    },3000)
+    
+  }else{
+    setTimeout(()=>{
+      chatbotAnswer("use correct key for response");
+    },5000)
+    
+  }
 }
+    
+ok.chatbotService.chatbotResponse
 
-const MilegaChat = ()=>{
-    const res = chatbotresponse(userMessage);
-    RMessageEl(res);
-}
 
-const RMessageEl = (txt)=>{
-  const wrapper = document.createElement("div");
-  const txtNode  = document.createTextNode(txt);
-   wrapper.classList.add("user-message");
-   wrapper.append(txtNode);
-   chatbodyEl.append(wrapper);
-}
 
-const chatbotresponse =(userMessage)=>{
-
-    return responseobj[userMessage] == undefined?"Please use another method":responseobj[userMessage]
-
-}
+sendEl.addEventListener("click", renderMessage);
