@@ -1,4 +1,4 @@
-import * as ok from "./response.js";
+import * as module from "./response.js";
 
 const sendEl = document.querySelector(".send");
 
@@ -37,17 +37,19 @@ const chatbodyEl = document.querySelector(".chat-body");
   },1000)
  }
   
-const renderMessage = ()=>{
+const renderMessage = async()=>{
   const userInput = txtinputEl.value ;
   getChat(userInput,"hello");
   txtinputEl.value = "";
-  const response = ok.chatbotService.chatbotResponse(userInput);
-  if(response){
+  try{
+  const response = await module.chatbotService.chatbotResponse(userInput)
+                     
+     console.log(response)
     setTimeout(()=>{
       chatbotAnswer(response);
     },3000)
-    
-  }else{
+  }
+  catch(error){
     setTimeout(()=>{
       chatbotAnswer("use correct key for response");
     },5000)
@@ -55,7 +57,6 @@ const renderMessage = ()=>{
   }
 }
     
-ok.chatbotService.chatbotResponse
 
 
 

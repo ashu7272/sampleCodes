@@ -30,7 +30,7 @@ body{
     overflow: hidden;
 
 }
-.chat-header,.style{
+.chat-header,.title{
     padding: 2opx;
 }
 .chat-body{

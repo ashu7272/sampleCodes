@@ -8,8 +8,14 @@
  }
 
    export const fetchBotresponse = (userInput)=>{
-        return responseobj[userInput];
-   }
+        return new Promise((resolve, reject)=>{
+        try {
+           resolve(responseobj[userInput])
+        } catch (error) {
+          reject(error)
+        }
+      });
+   };
 
 
  export const chatbotService = {
